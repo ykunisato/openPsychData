@@ -106,7 +106,7 @@ download_ospp <- function(data_name){
 #'
 #' @export
 #' @examples
-#' #load_ospp("16PF", codebook = TRUE)
+#' #data <- load_ospp("16PF", codebook = TRUE)
 load_ospp <- function(data_name, codebook = FALSE){
   if(file.exists(paste0(data_name,"/")) == FALSE){
     print("There are no directory with the data you specified in current directory. So data is downloading and building a directory now.")
@@ -116,13 +116,16 @@ load_ospp <- function(data_name, codebook = FALSE){
      data_name == "MACH"||
      data_name == "BIG5"||
      data_name == "EQSQ"||
-     data_name == "RIASEC"){
+     data_name == "RIASEC"||
+     data_name == "APS"||
+     data_name == "APSdev"){
         #read.tabel(tab)
         eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, fill = TRUE, sep = '\t')")))
   }else if(data_name == "NPI"||
      data_name == "TMA"||
      data_name == "HSQ"||
-     data_name == "SCS"){
+     data_name == "SCS"||
+     data_name == "ASSC"){
         #read.csv
         eval(parse(text = paste0("data = read.csv('",data_name,"/data.csv')")))
   }

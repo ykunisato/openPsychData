@@ -18,5 +18,5 @@ return the data from open source psychometrics project
 \code{load_ospp} load data from Open-Source Psychometrics Project(https://openpsychometrics.org/_rawdata/)
 }
 \examples{
-#load_ospp("16PF", codebook = TRUE)
+#data <- load_ospp("16PF", codebook = TRUE)
 }
