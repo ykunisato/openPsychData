@@ -4,12 +4,10 @@
 \alias{download_ospp}
 \title{Download data from open source psychometrics project}
 \usage{
-download_ospp(data_name, codebook = FALSE)
+download_ospp(data_name)
 }
 \arguments{
 \item{data_name:}{please specify the name of dataset}
-
-\item{codebook:}{If codebook set TRUE, load_ospp show the codebook of Open-Source Psychometrics Project}
 }
 \value{
 return the data from open source psychometrics project
@@ -18,5 +16,5 @@ return the data from open source psychometrics project
 \code{download_ospp} load data from Open-Source Psychometrics Project(https://openpsychometrics.org/_rawdata/)
 }
 \examples{
-#download_ospp("16PF", codebook = TRUE)
+#download_ospp("16PF")
 }
