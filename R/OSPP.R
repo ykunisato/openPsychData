@@ -107,7 +107,7 @@ load_ospp <- function(data_name, codebook = FALSE){
   }
 
   unzip(temp)
-  eval(parse(text = paste0("data = ","read.csv('",data_name,"/data.csv')")))
+  eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, sep = '\t')")))
 
   if(codebook == TRUE){
     viewer <- getOption("viewer")
