@@ -21,3 +21,6 @@ devtools::install_github("ykunisato/openPsychData")
 ```
 
 ## How to use
+
+    library(openPsychData)
+    load_ospp("16PF", codebook = TRUE)
