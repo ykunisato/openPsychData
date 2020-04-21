@@ -50,30 +50,30 @@ load_ospp <- function(data_name, codebook = FALSE){
   }else if(data_name == "HSQ"){
     download.file("http://openpsychometrics.org/_rawdata/HSQ.zip",temp)
     unzip(temp)
-
+    data = read.csv("HSQ/data.csv")
     if(codebook == TRUE){
-
+      file.show("HSQ/codebook.txt")
     }
   }else if(data_name == "EQSQ"){
     download.file("http://openpsychometrics.org/_rawdata/EQSQ.zip",temp)
     unzip(temp)
-
+    data = read.table("EQSQ/data.csv", header = TRUE, sep = '\t')
     if(codebook == TRUE){
-
+      file.show("EQSQ/codebook.txt")
     }
   }else if(data_name == "RIASEC_data12Dec2018"){
     download.file("http://openpsychometrics.org/_rawdata/RIASEC_data12Dec2018.zip",temp)
     unzip(temp)
-
+    data = read.table("RIASEC_data12Dec2018/data.csv", header = TRUE, fill = TRUE , sep = '\t')
     if(codebook == TRUE){
-
+      file.show("RIASEC_data12Dec2018/codebook.txt")
     }
   }else if(data_name == "SCS"){
     download.file("http://openpsychometrics.org/_rawdata/SCS.zip",temp)
     unzip(temp)
-
+    data = read.csv("SCS/data.csv")
     if(codebook == TRUE){
-
+      file.show("SCS/codebook.txt")
     }
   }else if(data_name == "MGKT_data"){
     download.file("http://openpsychometrics.org/_rawdata/MGKT_data.zip",temp)
