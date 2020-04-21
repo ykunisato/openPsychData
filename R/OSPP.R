@@ -15,20 +15,24 @@ load_ospp <- function(data_name, codebook = FALSE){
   if(data_name == "16PF"){
     download.file("http://openpsychometrics.org/_rawdata/16PF.zip",temp)
     unzip(temp)
-    eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, sep = '\t')")))
+    data = read.table("16PF/data.csv", header = TRUE, sep = '\t')
     if(codebook == TRUE){
-      viewer <- getOption("viewer")
-      eval(parse(text = paste0("viewer('",data_name,"/codebook.html')")))
+      file.show("16PF/codebook.html")
     }
   }else if(data_name == "NPI"){
     download.file("http://openpsychometrics.org/_rawdata/NPI.zip",temp)
     unzip(temp)
-    eval(parse(text = paste0("data = read.csv('",data_name,"/data.csv')")))
+    data = read.csv("NPI/data.csv")
     if(codebook == TRUE){
-      eval(parse(text = paste0("file.show('",data_name,"/codebook.txt')")))
+      file.show("NPI/codebook.txt")
     }
   }else if(data_name == "MACH_data"){
     download.file("http://openpsychometrics.org/_rawdata/MACH_data.zip",temp)
+    unzip(temp)
+    data = read.table("MACH_data/data.csv", header = TRUE, sep = '\t')
+    if(codebook == TRUE){
+      file.show("MACH_data/codebook.txt")
+    }
   }else if(data_name == "BIG5"){
     download.file("http://openpsychometrics.org/_rawdata/BIG5.zip",temp)
   }else if(data_name == "TMA"){
