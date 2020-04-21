@@ -30,6 +30,8 @@ devtools::install_github("ykunisato/openPsychData")
 ```
 ## How to use
 
+https://docs.google.com/spreadsheets/d/1FHiqq7q5iItaU8KfYZTo_8bKhUGM_yGwMiklx8GiMXI/edit?usp=sharing
+
 ``` 
 library(openPsychData)
 load_ospp("16PF", codebook = TRUE)
