@@ -14,8 +14,19 @@ load_ospp <- function(data_name, codebook = FALSE){
   temp <- tempfile()
   if(data_name == "16PF"){
     download.file("http://openpsychometrics.org/_rawdata/16PF.zip",temp)
+    unzip(temp)
+    eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, sep = '\t')")))
+    if(codebook == TRUE){
+      viewer <- getOption("viewer")
+      eval(parse(text = paste0("viewer('",data_name,"/codebook.html')")))
+    }
   }else if(data_name == "NPI"){
     download.file("http://openpsychometrics.org/_rawdata/NPI.zip",temp)
+    unzip(temp)
+    eval(parse(text = paste0("data = read.csv('",data_name,"/data.csv')")))
+    if(codebook == TRUE){
+      eval(parse(text = paste0("file.show('",data_name,"/codebook.txt')")))
+    }
   }else if(data_name == "MACH_data"){
     download.file("http://openpsychometrics.org/_rawdata/MACH_data.zip",temp)
   }else if(data_name == "BIG5"){
@@ -104,13 +115,5 @@ load_ospp <- function(data_name, codebook = FALSE){
     download.file("https://openpsychometrics.org/_rawdata/MIES_Dev_Data.zip",temp)
   }else if(data_name == "AMBI_data_Dec2019"){
     download.file("https://openpsychometrics.org/_rawdata/AMBI_data_Dec2019.zip",temp)
-  }
-
-  unzip(temp)
-  eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, sep = '\t')")))
-
-  if(codebook == TRUE){
-    viewer <- getOption("viewer")
-    eval(parse(text = paste0("viewer('",data_name,"/codebook.html')")))
   }
 }
