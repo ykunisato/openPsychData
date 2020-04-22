@@ -112,26 +112,66 @@ load_ospp <- function(data_name, codebook = FALSE){
     print("There are no directory with the data you specified in current directory. So data is downloading and building a directory now.")
     download_ospp(data_name)
   }
-  if(data_name == "16PF"||
+  if(data_name == "APS"||
+     data_name == "APSdev"||
+     data_name == "DASS"||
+     data_name == "duckworth"||
+     data_name == "FTI"||
+     data_name == "HSNSDD"||
      data_name == "MACH"||
-     data_name == "BIG5"||
-     data_name == "EQSQ"||
+     data_name == "MIES"||
+     data_name == "NIS"||
+     data_name == "NPAS"||
+     data_name == "OHBDS"||
+     data_name == "OSRI44"||
+     data_name == "PWE"||
      data_name == "RIASEC"||
-     data_name == "APS"||
-     data_name == "APSdev"){
+     data_name == "VIQT"||
+     data_name == "16PF"||
+     data_name == "BIG5"||
+     data_name == "CFCS"||
+     data_name == "EBFMT"||
+     data_name == "EQSQ"||
+     data_name == "FPS"||
+     data_name == "GCBS"||
+     data_name == "HEXACO"||
+     data_name == "IQ1"||
+     data_name == "itemsgen"||
+     data_name == "KIMS"||
+     data_name == "MSSCQ"||
+     data_name == "NPI"||
+     data_name == "randomnumber"||
+     data_name == "RSE"||
+     data_name == "RWAS"||
+     data_name == "SD3"||
+     data_name == "SENTANCES1"||
+     data_name == "Wagner"||
+     data_name == "WPI"
+     ){
         #read.tabel(tab)
         eval(parse(text = paste0("data = read.table('",data_name,"/data.csv', header = TRUE, fill = TRUE, sep = '\t')")))
   }else if(data_name == "NPI"||
      data_name == "TMA"||
      data_name == "HSQ"||
      data_name == "SCS"||
-     data_name == "ASSC"){
+     data_name == "ASSC"||
+     data_name == "ECR"||
+     data_name == "MGKT"||
+     data_name == "FSIQ"){
         #read.csv
         eval(parse(text = paste0("data = read.csv('",data_name,"/data.csv')")))
+  }else if(data_name == "FBPS"){
+    data <- read.table("FBPS/FBPS-ValidationData.csv", header = TRUE, fill = TRUE, sep = '\t')
+  }else if(data_name == "IPIPFFM"){
+    data = read.table("IPIPFFM/data-final.csv", header = TRUE, fill = TRUE, sep = '\t')
+  }else if(data_name == "NR6"){
+    data = read.table("NR6/data-final.csv", header = TRUE, fill = TRUE, sep = '\t')
   }
   if(codebook == TRUE){
-    if(data_name == "16PF"){
+    if(data_name == "16PF"||data_name == "ECR"){
       eval(parse(text = paste0("file.show('",data_name,"/codebook.html')")))
+    }else if(data_name == "FBPS"){
+      file.show("FBPS/FBPS-ValidationData-Codebook.txt")
     }else{
       eval(parse(text = paste0("file.show('",data_name,"/codebook.txt')")))
     }
