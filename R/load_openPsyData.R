@@ -21,8 +21,8 @@ load_openPsyData <- function(dataset_name, codebook = FALSE){
     eval(parse(text = paste0("download.file('http://openpsychometrics.org/_rawdata/",data_select$original_name,".zip',temp)")))
     unzip(temp, exdir = tempdir())
     eval(parse(text = paste0("files_names <- list.files('",tempdir(),"/",data_select$unzip_name,"')")))
-    dir.create(data_select$dataset_name)
-    file.copy(paste0(tempdir(), "/",data_select$unzip_name,"/",files_names), paste0(data_select$dataset_name, "/", files_names))
+    dir.create(dataset_name)
+    file.copy(paste0(tempdir(), "/",data_select$unzip_name,"/",files_names), paste0(dataset_name, "/", files_names))
     unlink(temp)
   }
 
