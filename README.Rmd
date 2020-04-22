@@ -30,25 +30,17 @@ devtools::install_github("ykunisato/openPsychData")
 ```
 ## 使い方
 
-現状では，[Open-Source Psychometrics Project](https://openpsychometrics.org/_rawdata/)のデータをダウンロードして，Rにデータとして読み込みができます。[Open-Source Psychometrics Project](https://openpsychometrics.org/_rawdata/)をみて，以下のGoogleスプレッドシートのdata_name in openPsychDataの列から，必要なデータセットの「data_name」を確認ください。
+現状では，[Open-Source Psychometrics Project](https://openpsychometrics.org/_rawdata/)のデータをダウンロードして，Rにデータとして読み込みができます。[Open-Source Psychometrics Project](https://openpsychometrics.org/_rawdata/)をみて，以下のGoogleスプレッドシートのdataset_name in openPsychDataの列から，必要なデータセットの「dataset_name」を確認ください。
 
 [openPsychDataのGoogleスプレッドシート](https://docs.google.com/spreadsheets/d/1FHiqq7q5iItaU8KfYZTo_8bKhUGM_yGwMiklx8GiMXI/edit?usp=sharing)
 
 
-### データのダウンロード
-
-データのダウンロードは，download_ospp()を使います。「data_name」に使いたいデータの名前を指定ください。自動的にダウンロードして，カレントディレクトリに「data_name」と同じ名前のディレクトリを作成して，データを保存します。
-
-``` 
-library(openPsychData)
-download_ospp(data_name = "16PF")
-```
-
 ### データの読み込み
 
-ダウンロードしたデータを読み込む場合は，load_ospp()を使ってください。codebookをTRUEにしておくと変数の説明をしたcodebookを開きます。また，もし，まだカレントディレクトリにデータをダウンロードしていない場合は，自動的にダウンロードします。
+データを読み込む場合は，load_openPsyData()を使ってください。「dataset_name」に使いたいデータの名前を指定ください。もし，まだカレントディレクトリにデータをダウンロードしていない場合は，自動的にダウンロードします（カレントディレクトリに「dataset_name」と同じ名前のディレクトリを作成して，データを保存します）。
+codebookをTRUEにしておくと変数の説明をしたcodebookを開きます。
 
 ``` 
 library(openPsychData)
-data <- load_ospp(data_name = "16PF", codebook = TRUE)
+data <- load_openPsyData(dataset_name = "16PF", codebook = TRUE)
 ```
