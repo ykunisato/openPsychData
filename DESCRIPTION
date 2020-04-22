@@ -1,7 +1,7 @@
 Package: openPsychData
 Type: Package
 Title: R package for loading the open data in psychology
-Version: 0.1.0
+Version: 0.1.1
 Author: Yoshihiko Kunisato
 Maintainer: Yoshihiko Kunisato <ykunisato@gmail.com>
 Description: R package for loading the open data in psychology

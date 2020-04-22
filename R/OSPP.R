@@ -27,11 +27,12 @@ download_ospp <- function(data_name){
      data_name == "NIS" ||
      data_name == "NPAS" ||
      data_name == "NR6" ||
-     data_name == "OHBDSv" ||
+     data_name == "OHBDS" ||
      data_name == "OSRI44" ||
      data_name == "PWE" ||
      data_name == "RIASEC" ||
-     data_name == "VIQT"){
+     data_name == "VIQT"||
+     data_name == "GCBS"){
 
     if(data_name == "APS"){
       original_data_name <- "APS_data"
@@ -77,11 +78,18 @@ download_ospp <- function(data_name){
       original_data_name <- "RIASEC_data12Dec2018"
     }else if(data_name == "VIQT"){
       original_data_name <- "VIQT_data"
+    }else if(data_name == "GCBS"){
+      original_data_name <- "GCBS"
     }
 
     temp <- tempfile()
     eval(parse(text = paste0("download.file('http://openpsychometrics.org/_rawdata/",original_data_name,".zip',temp)")))
     unzip(temp, exdir = tempdir())
+    if(data_name == "OHBDS"){
+      original_data_name <- "HBDS-data"
+    }else if(data_name == "GCBS"){
+      original_data_name <- "data"
+    }
     eval(parse(text = paste0("files_names <- list.files('",tempdir(),"/",original_data_name,"')")))
     dir.create(data_name)
     file.copy(paste0(tempdir(), "/",original_data_name,"/",files_names), paste0(data_name, "/", files_names))
@@ -126,25 +134,17 @@ load_ospp <- function(data_name, codebook = FALSE){
      data_name == "OSRI44"||
      data_name == "PWE"||
      data_name == "RIASEC"||
-     data_name == "VIQT"||
      data_name == "16PF"||
      data_name == "BIG5"||
      data_name == "CFCS"||
      data_name == "EBFMT"||
      data_name == "EQSQ"||
      data_name == "FPS"||
-     data_name == "GCBS"||
      data_name == "HEXACO"||
-     data_name == "IQ1"||
      data_name == "itemsgen"||
-     data_name == "KIMS"||
      data_name == "MSSCQ"||
-     data_name == "NPI"||
-     data_name == "randomnumber"||
      data_name == "RSE"||
-     data_name == "RWAS"||
      data_name == "SD3"||
-     data_name == "SENTANCES1"||
      data_name == "Wagner"||
      data_name == "WPI"
      ){
@@ -157,7 +157,13 @@ load_ospp <- function(data_name, codebook = FALSE){
      data_name == "ASSC"||
      data_name == "ECR"||
      data_name == "MGKT"||
-     data_name == "FSIQ"){
+     data_name == "FSIQ"||
+     data_name == "GCBS"||
+     data_name == "IQ1"||
+     data_name == "KIMS"||
+     data_name == "NPI"||
+     data_name == "randomnumber"||
+     data_name == "RWAS"){
         #read.csv
         eval(parse(text = paste0("data = read.csv('",data_name,"/data.csv')")))
   }else if(data_name == "FBPS"){
@@ -166,9 +172,14 @@ load_ospp <- function(data_name, codebook = FALSE){
     data = read.table("IPIPFFM/data-final.csv", header = TRUE, fill = TRUE, sep = '\t')
   }else if(data_name == "NR6"){
     data = read.table("NR6/data-final.csv", header = TRUE, fill = TRUE, sep = '\t')
+  }else if(data_name == "VIQT"){
+    data = read.table("VIQT/VIQT_data.csv", header = TRUE, fill = TRUE, sep = '\t')
+  }else if(data_name == "SENTANCES1"){
+    data1 = read.csv("SENTANCES1/data1.csv")
+    data2 = read.csv("SENTANCES1/data2.csv")
   }
   if(codebook == TRUE){
-    if(data_name == "16PF"||data_name == "ECR"){
+    if(data_name == "16PF"||data_name == "ECR"||data_name == "WPI"){
       eval(parse(text = paste0("file.show('",data_name,"/codebook.html')")))
     }else if(data_name == "FBPS"){
       file.show("FBPS/FBPS-ValidationData-Codebook.txt")
@@ -176,5 +187,9 @@ load_ospp <- function(data_name, codebook = FALSE){
       eval(parse(text = paste0("file.show('",data_name,"/codebook.txt')")))
     }
   }
-  return(data)
+  if(data_name == "SENTANCES1"){
+    return(list(data1=data1, data2=data2))
+  }else{
+    return(data)
+  }
 }
