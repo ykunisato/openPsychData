@@ -20,14 +20,14 @@ devtools::install_github("ykunisato/openPsychData")
 
 ## 使い方
 
-現状では，Open-Source Psychometrics
-Project(<https://openpsychometrics.org/_rawdata/)のデータをダウンロードして，Rにデータとして読み込みができます。Open-Source>
+現状では，[Open-Source Psychometrics
+Project](https://openpsychometrics.org/_rawdata/)のデータをダウンロードして，Rにデータとして読み込みができます。[Open-Source
 Psychometrics
-Project(<https://openpsychometrics.org/_rawdata/)をみて，以下のGoogleスプレッドシートのdata_name>
+Project](https://openpsychometrics.org/_rawdata/)をみて，以下のGoogleスプレッドシートのdata\_name
 in
 openPsychDataの列から，必要なデータセットの「data\_name」を確認ください。
 
-<https://docs.google.com/spreadsheets/d/1FHiqq7q5iItaU8KfYZTo_8bKhUGM_yGwMiklx8GiMXI/edit?usp=sharing>
+[openPsychDataのGoogleスプレッドシート](https://docs.google.com/spreadsheets/d/1FHiqq7q5iItaU8KfYZTo_8bKhUGM_yGwMiklx8GiMXI/edit?usp=sharing)
 
 ### データのダウンロード
 
