@@ -25,5 +25,31 @@ load_openPsyData <- function(dataset_name, codebook = FALSE){
     file.copy(paste0(tempdir(), "/",data_select$unzip_name,"/",files_names), paste0(dataset_name, "/", files_names))
     unlink(temp)
   }
-
+  # load data
+  for (i in 1:data_select$n_file) {
+    if(data_select$read_method == 1){
+      #read.tabel(read_method == 1)
+      eval(parse(text = paste0("data",i," = read.table('",dataset_name,"/",data_select[1,4+i],"', header = TRUE, fill = TRUE, sep = '\t')")))
+    }else if(data_select$read_method == 2){
+      #read.csv(read_method == 2)
+      eval(parse(text = paste0("data",i," = read.csv('",dataset_name,"/",data_select[1,4+i],"')")))
+    }
+  }
+  # show codebook
+  if(codebook == TRUE){
+    eval(parse(text = paste0("file.show('",dataset_name,"/",data_select$codebook_name,"')")))
+  }
+  # output dataset
+  if(data_select$n_file > 1){
+    for (i in 1:data_select$n_file) {
+      if(i == 1){
+        tmp_list <- paste0("data",i,"=data",i)
+      }else{
+        tmp_list <- paste0(tmp_list,",data",i,"=data",i)
+      }
+    }
+    eval(parse(text = paste0("return(list(",tmp_list,"))")))
+  }else{
+    return(data1)
+  }
 }
