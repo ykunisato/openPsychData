@@ -25,7 +25,7 @@ Project](https://openpsychometrics.org/_rawdata/)のデータをダウンロー�
 Psychometrics
 Project](https://openpsychometrics.org/_rawdata/)をみて，以下のGoogleスプレッドシートのdataset\_name
 in
-openPsychDataの列から，必要なデータセットの「dataset\_name」を確認ください。
+openPsychDataの列から，必要なデータセットの「dataset\_name」を確認ください。利用可能なデータセットは順次増やしていく予定です。
 
 [openPsychDataのGoogleスプレッドシート](https://docs.google.com/spreadsheets/d/1FHiqq7q5iItaU8KfYZTo_8bKhUGM_yGwMiklx8GiMXI/edit?usp=sharing)
 
