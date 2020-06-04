@@ -14,15 +14,22 @@ load_openPsyData <- function(dataset_name, codebook = FALSE){
   #load internal data
   openPsychData:::openPsychData_inetnal_data
   data_select <- subset(openPsychData_inetnal_data, openPsychData_inetnal_data$data_name == dataset_name)
+  OS <- .Platform$OS.type
   # If the dataset does not exist, download and save it.
   if(file.exists(paste0(dataset_name,"/")) == FALSE){
     print("There are no directory with the data you specified in current directory. So data is downloading and building a directory now.")
     temp <- tempfile()
     eval(parse(text = paste0("download.file('http://openpsychometrics.org/_rawdata/",data_select$original_name,".zip',temp)")))
     unzip(temp, exdir = tempdir())
-    eval(parse(text = paste0("files_names <- list.files('",tempdir(),"/",data_select$unzip_name,"')")))
-    dir.create(dataset_name)
-    file.copy(paste0(tempdir(), "/",data_select$unzip_name,"/",files_names), paste0(dataset_name, "/", files_names))
+    if (OS == "windows"){
+      eval(parse(text = gsub("\\\\", "/", paste0("files_names <- list.files('",tempdir(),"\\",data_select$unzip_name,"')"))))
+      dir.create(dataset_name)
+      file.copy(gsub("\\\\", "/", paste0(tempdir(), "/",data_select$unzip_name,"/",files_names)), paste0(dataset_name, "/", files_names))
+    }else{
+      eval(parse(text = paste0("files_names <- list.files('",tempdir(),"/",data_select$unzip_name,"')")))
+      dir.create(dataset_name)
+      file.copy(paste0(tempdir(), "/",data_select$unzip_name,"/",files_names), paste0(dataset_name, "/", files_names))
+    }
     unlink(temp)
   }
   # load data
