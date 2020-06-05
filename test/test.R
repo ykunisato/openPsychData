@@ -12,8 +12,4 @@ setwd("..")
 library(openxlsx)
 data <- read.xlsx("PVDJapan2018.xlsx")
 
-#山田さんのマルチラボのやつ
-
-
-
 
